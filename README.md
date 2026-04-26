@@ -7,7 +7,7 @@ This project downloads the **CICIDS2017** dataset from Kaggle and runs a basic M
 
 ## Setup
 
-##1. Create and activate a virtual environment
+1. Create and activate a virtual environment
 
 ```bash
 python3 -m venv venv
@@ -15,7 +15,7 @@ source venv/bin/activate
 ```
 You will see (venv) at the start of your terminal prompt when it is active. Always activate the venv before running anything.
 
-##2. Install dependencies
+2. Install dependencies
 
 ```bash
 pip install kagglehub pandas pyarrow scikit-learn
