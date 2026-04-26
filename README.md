@@ -1,15 +1,23 @@
 # CICIDS2017 Dataset Project
 
-This project downloads the **CICIDS2017** dataset using `kagglehub`, reads the `.parquet` files with `pandas`, and provides two Python scripts:
+This project downloads the **CICIDS2017** dataset from Kaggle and runs a basic ML workflow on it.
 
-- `getStats.py` → shows dataset statistics
-- `main.py` → loads the data, prepares text features, and runs a basic machine learning workflow
+- `getStats.py` → prints dataset statistics
+- `main.py` → trains a TF-IDF + Logistic Regression baseline (Benign vs Attack)
 
-## Requirements
-
-Make sure you have Python 3 installed.
-
-Install the needed packages in your virtual environment:
+## Setup
 
 ```bash
 pip install kagglehub pandas pyarrow scikit-learn
+```
+
+You'll also need a Kaggle account with a `kaggle.json` API token configured.
+
+## Usage
+
+```bash
+python getStats.py   # show record count, labels, class distribution
+python main.py       # train baseline model and print classification report
+```
+
+The dataset downloads automatically to `./data/` on first run.
