@@ -19,6 +19,7 @@ You will see (venv) at the start of your terminal prompt when it is active. Alwa
 
 ```bash
 pip install kagglehub pandas pyarrow scikit-learn
+pip install transformers torch datasets accelerate
 ```
 
 You'll also need a Kaggle account with a `kaggle.json` API token configured.
@@ -28,6 +29,8 @@ You'll also need a Kaggle account with a `kaggle.json` API token configured.
 ```bash
 python getStats.py   # show record count, labels, class distribution
 python main.py       # train baseline model and print classification report
+python rf_numeric.py # Tree-based baseline on raw numeric features (no text)
+python distilbert_run.py #DistilBERT transformer model
 ```
 
 The dataset downloads automatically to `./data/` on first run.
