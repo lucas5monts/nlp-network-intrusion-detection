@@ -41,12 +41,12 @@ df = pd.concat(dfs, ignore_index=True)
 # 1 = Attack
 df["label"] = df["Label"].apply(lambda x: 0 if x == "Benign" else 1)
 
-# Use a smaller balanced sample because BERT is much slower than Logistic Regression
-benign_df = df[df["label"] == 0].sample(n=25000, random_state=42)
-attack_df = df[df["label"] == 1].sample(n=25000, random_state=42)
+# Use a random 50K sample with the natural class distribution.
+# This makes Step 4 more consistent with the earlier baselines.
+df_sample = df.sample(n=50000, random_state=42).reset_index(drop=True)
 
-df_sample = pd.concat([benign_df, attack_df], ignore_index=True)
-df_sample = df_sample.sample(frac=1, random_state=42).reset_index(drop=True)
+print("Sample class distribution:")
+print(df_sample["label"].value_counts())
 
 # Serialize rows into text
 feature_cols = [c for c in df_sample.columns if c not in ["Label", "label"]]
