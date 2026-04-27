@@ -1,0 +1,9 @@
+kagglehub
+pandas
+pyarrow
+scikit-learn
+transformers
+torch
+datasets
+accelerate
+matplotlib
