@@ -87,7 +87,7 @@ model = AutoModelForSequenceClassification.from_pretrained(
 
 training_args = TrainingArguments(
     output_dir="./distilbert_output",
-    eval_strategy="epoch",
+    evaluation_strategy="epoch",
     save_strategy="no",
     learning_rate=2e-5,
     per_device_train_batch_size=16,
@@ -96,9 +96,6 @@ training_args = TrainingArguments(
     weight_decay=0.01,
     logging_steps=100,
     report_to="none",
-
-    # GPU settings
-    no_cuda=not torch.cuda.is_available(),
     fp16=use_fp16
 )
 
