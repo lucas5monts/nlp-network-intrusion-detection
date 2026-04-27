@@ -15,6 +15,16 @@ from transformers import (
 from sklearn.metrics import classification_report, confusion_matrix
 
 
+# Check device
+if torch.cuda.is_available():
+    device_name = torch.cuda.get_device_name(0)
+    print(f"GPU available: {device_name}")
+    use_fp16 = True
+else:
+    print("No GPU found. Running on CPU.")
+    use_fp16 = False
+
+
 # Load CICIDS2017 dataset
 path = kagglehub.dataset_download("dhoogla/cicids2017", output_dir="./data")
 data_path = Path(path)
@@ -85,7 +95,11 @@ training_args = TrainingArguments(
     num_train_epochs=2,
     weight_decay=0.01,
     logging_steps=100,
-    report_to="none"
+    report_to="none",
+
+    # GPU settings
+    no_cuda=not torch.cuda.is_available(),
+    fp16=use_fp16
 )
 
 trainer = Trainer(
