@@ -87,7 +87,6 @@ model = AutoModelForSequenceClassification.from_pretrained(
 
 training_args = TrainingArguments(
     output_dir="./distilbert_output",
-    evaluation_strategy="epoch",
     save_strategy="no",
     learning_rate=2e-5,
     per_device_train_batch_size=16,
